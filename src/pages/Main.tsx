@@ -6,7 +6,8 @@ export default function MainPage () {
     return(
         <>
             <h2>메인 페이지</h2>
-            <button onClick={()=>navigate('input-form')}>입력 Form</button>
+            <button onClick={()=>navigate('/input-form')}>입력 Form</button>
+            <button onClick={()=>navigate('/login-form')}>로그인 Form</button>
         </>
     )
 }

@@ -110,7 +110,7 @@ export default function InputFormPage () {
             {fileName && `파일명 : ${fileName}`}
             {preview && <img src={preview} alt="image"/>}
         </div>
-        <div>
+        <div style={{marginTop : '50px'}}>
             <button onClick={()=>Save()}>서버로 전송하기</button>
         </div>
         </>
