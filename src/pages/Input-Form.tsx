@@ -15,7 +15,7 @@ export default function InputFormPage () {
     })
 
     // File BinaryData 를 저장하는 상태 값
-    const [file , setFile] = useState<string | Blob>();
+    const [file , setFile] = useState<Blob>();
     const [image , setImage] = useState<Blob>();
 
     // 파일명을 저장하는 상태 값
@@ -47,7 +47,7 @@ export default function InputFormPage () {
         }
         reader.onload = () => {
             if (e.target.files && e.target.files[0] && typeof e.target.files[0].name === 'string') {
-                setFile(file); // File 타입
+                setFile(e.target.files[0]); // File 타입
                 setFileName(e.target.files[0].name); // string 타입의 파일 이름명을 저장한다.
             }
         }
