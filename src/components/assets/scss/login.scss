@@ -1,0 +1,118 @@
+
+// npm install sass 필요!
+
+$primary-color : #e6007e;
+$gray-color : #999;
+$border-color : #e6e6e6;
+$font-famaily : 'Arial', sans-serif;
+
+.login-container {
+    font-family: $font-famaily;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #fff;
+
+    .login-box {
+        width : 360px;
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+
+            label {
+                display: block;
+                font-size: 0.9rem;
+                color : #333;
+                margin-bottom : 0.5rem;
+            }
+
+            input {
+                width : 100%;
+                padding: 0.8rem;
+                border: 1px solid $border-color;
+                border-radius: 4px;
+                font-size: 0.9rem;
+                outline: none;
+
+                &:focus {
+                    border-color: $gray-color;
+                }
+            }
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+
+            .checkbox-group {
+                display: flex;
+                align-items: center;
+                
+                input {
+                    margin-right : 0.3rem;
+                }
+
+                label {
+                    font-size: 0.9rem;
+                    color : #333;
+                }
+            }
+
+            .service-link {
+                font-size: 0.9rem;
+                color : #333;
+                cursor: pointer;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .additional-links {
+            display: flex;
+            justify-content: center;
+            gap : 1rem;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+
+            a{
+                text-decoration: none;
+                color : $gray-color;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .login-btn {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            background-color: $primary-color;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            align-items: center;
+            border : none;
+            border-radius: 4px;
+            cursor: pointer;
+            // 딜레이를 주며 부드럽게 색이 변하도록 설정
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: darken($primary-color, 10%);
+            }
+        }
+    }
+}

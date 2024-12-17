@@ -1,24 +1,41 @@
 import { Route, Routes } from "react-router-dom";
-import MainPage from "./pages/Main";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import InputFormPage from "./pages/Input-Form";
-import LoginFormPage from "./pages/Login-Form";
+import Home from "./components/Layout/Home";
+import Layout from "./components/Layout/Layout";
+import { GuestRouterData } from "./data/GuestRouterData";
+import LoadingSpinner from "./components/Layout/LoadingSpinner";
+import { ApolloProvider } from "@apollo/client";
+import client from "./graphql/client";
 
 // react-router-dom : URL 주소에 따라 원하는 컴포넌트 (또는 페이지) 로 페이지 전환 가능
 
 function App() {
+
   return (
     <>
-    <Header/>
+    <ApolloProvider client={client}>
+      <LoadingSpinner/>
+      
+      <Routes>
+        <Route element={<Home/>}>
 
-    <Routes>
-      <Route path="/" element={<MainPage/>} />
-      <Route path="/input-form" element={<InputFormPage/>} />
-      <Route path="/login-form" element={<LoginFormPage/>} />
-    </Routes>
+          {/* auth : 로그인 정보 */}
+          {/* 로그인 정보가 없다면 False , 있다면 True 로 전달 */}
 
-    <Footer/>
+          <Route element={<Layout auth={false} />}>
+
+            {GuestRouterData?.map((obj : any , objIndex : number) => (
+              <Route 
+                key={`${obj.path}-${objIndex}`} 
+                path={obj?.path} 
+                element={obj?.element}
+              />
+            ))}
+
+          </Route>
+
+        </Route>
+      </Routes>
+    </ApolloProvider>
     </>
   );
 }
