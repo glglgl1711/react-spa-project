@@ -1,0 +1,83 @@
+$primary-color: #25196e;
+$hover-color: #443f84;
+$text-color: #ffffff;
+$background-color: #0f0f19;
+$border-color: rgba(255, 255, 255, 0.2);
+
+.sidebar {
+    width : 250px;
+    height: 100vh;
+    background-color: $primary-color;
+    color: $text-color;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    // 로고 영역 스타일
+  .sidebar-logo {
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $text-color;
+    text-align: center;
+    border-bottom: 1px solid $border-color;
+  }
+
+  // 메뉴 리스트 스타일
+  .menu {
+    flex: 1;
+    padding : 0;
+    list-style: none;
+    margin: 0;
+
+    li {
+        margin: 0;
+        padding: 0;
+      a {
+        display: flex;
+        align-items: center;
+        padding: 12px 20px 12px 0;
+        color: $text-color;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: background 0.3s ease;
+
+        &:hover {
+          background-color: $hover-color;
+        }
+
+        // 아이콘 스타일링
+        i {
+          margin-right: 12px;
+          font-size: 1.2rem;
+          padding-left: 20px;
+        }
+      }
+
+      // 활성 메뉴 스타일
+      &.active a {
+        background-color: $hover-color;
+        font-weight: bold;
+      }
+    }
+  }
+
+  // 푸터 스타일
+  .sidebar-footer {
+    padding: 10px 20px;
+    text-align: center;
+    border-top: 1px solid $border-color;
+
+    a {
+      color: $text-color;
+      font-size: 0.8rem;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -41,7 +41,7 @@ const resolvers = {
             const userpass = users.find((u) => u.password === password);
             if(!user) throw new Error("사용자를 찾을 수 없습니다.");
             if(!userpass) throw new Error("비밀번호가 일치하지 않습니다.");
-
+            
             const token = jwt.sign({ id : user.id , username : user.username }, '1234' , {
                 expiresIn : '1h'
             });
@@ -60,12 +60,14 @@ const server = new ApolloServer({
     resolvers , 
     context : ({req}) => {
         const token = req.headers.authorization || "";
-        if(token) {
+        const purseToken = token.replace("Bearer " , "");
+        console.log(purseToken)
+        if(purseToken) {
             try {
-                const user = jwt.verify(token , '1234');
+                const user = jwt.verify(purseToken , '1234');
                 return {user};
             }catch (e) {
-                console.log('TOKEN 검증 실패');
+                console.log("JWT 검증 실패:", e.message);
             }
         }
         return {};
